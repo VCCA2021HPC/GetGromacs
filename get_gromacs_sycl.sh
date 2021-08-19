@@ -17,13 +17,13 @@ cd gromacs-2021-sycl
 echo "#!/bin/bash" > build.sh
 echo "mkdir build-single-node" >> build.sh
 echo "cd build-single-node" >> build.sh
-echo "cmake  -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=SYCL -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DCMAKE_INSTALL_PREFIX=${HOME}/GROMACS-SYCL/gromacs-2021-sycl-install .." >> build.sh
+echo "cmake -DGMX_FFT_LIBRARY=mkl  -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=SYCL -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DCMAKE_INSTALL_PREFIX=${HOME}/GROMACS-SYCL/gromacs-2021-sycl-install .." >> build.sh
 echo "make" >> build.sh
 echo "make install" >> build.sh
 echo "cd .." >> build.sh
 echo "mkdir build-multi-node" >> build.sh
 echo "cd build-multi-node" >> build.sh
-echo "cmake -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=SYCL -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DCMAKE_INSTALL_PREFIX=${HOME}/GROMACS-SYCL/gromacs-2021-sycl-install2 -DGMX_MPI=ON -DBUILD_SHARED_LIBS=off  -DGMXAPI=OFF .." >> build.sh
+echo "cmake -DGMX_FFT_LIBRARY=mkl -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_GPU=SYCL -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx -DCMAKE_INSTALL_PREFIX=${HOME}/GROMACS-SYCL/gromacs-2021-sycl-install -DGMX_MPI=ON -DBUILD_SHARED_LIBS=off  -DGMXAPI=OFF .." >> build.sh
 echo "make -j2" >> build.sh
 echo "make install" >> build.sh
 echo "cd .." >> build.sh
